@@ -1,0 +1,78 @@
+.sleep-section {
+    margin: 20px 0;
+  
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+  
+    .carousel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      max-width: 800px;
+      margin: 0 auto;
+  
+      .prev-button,
+      .next-button {
+        background-color: transparent;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 2;
+      }
+  
+      .prev-button {
+        left: 10px;
+      }
+  
+      .next-button {
+        right: 10px;
+      }
+  
+      .carousel-track {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+  
+        .room-card {
+          flex: 1 0 calc(50% - 20px); /* Show two cards per slide */
+          margin: 0 10px;
+          display: none; /* Hide cards by default */
+  
+          &.visible {
+            display: block;
+          }
+  
+          .room-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+          }
+  
+          .room-info {
+            text-align: center;
+            margin-top: 10px;
+  
+            h3 {
+              font-size: 16px;
+              font-weight: bold;
+              margin-bottom: 5px;
+            }
+  
+            p {
+              font-size: 14px;
+              color: #555;
+            }
+          }
+        }
+      }
+    }
+  }
+  
