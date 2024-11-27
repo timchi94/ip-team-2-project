@@ -23,10 +23,6 @@ const HeaderSection = () => (
 const HostInfoSection = () => (
   <div className="host-info-section">
     <img src="host-profile.png" alt="Host" className="host-image" />
-    <div>
-      <h3 className="host-name">Hosted by Shiyu</h3>
-      <p className="host-meta">Superhost · 1 year hosting</p>
-    </div>
   </div>
 );
 

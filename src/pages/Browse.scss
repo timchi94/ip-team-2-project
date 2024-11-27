@@ -202,6 +202,18 @@
 			}
 		}
 
+        .scroll {
+            position: sticky; /* Sticks within its parent container */
+            top: 100px; /* Distance from the top of the viewport */
+            overflow-y: auto; /* Enables scrolling for the container */
+            max-height: calc(100vh - 120px); /* Adjust the height dynamically to fit within the viewport */
+            padding: 1rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+            border-radius: 8px;
+          }
+          
 		.booking-card {
 			flex: 1; /* Smaller width for the card */
 			max-width: 30%; /* Ensure proper alignment with details */
@@ -209,6 +221,7 @@
 			border-radius: 8px;
 			padding: 1rem;
 			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
 
 			h2 {
 				font-size: 1.5rem;
