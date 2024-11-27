@@ -10,15 +10,13 @@
   
     .carousel {
       position: relative;
-      display: flex;
-      align-items: center;
       overflow: hidden;
       max-width: 800px;
       margin: 0 auto;
   
       .prev-button,
       .next-button {
-        background-color: transparent;
+        background-color: white;
         border: none;
         font-size: 24px;
         cursor: pointer;
@@ -39,37 +37,46 @@
       .carousel-track {
         display: flex;
         transition: transform 0.5s ease-in-out;
+        will-change: transform; 
+      }
   
-        .room-card {
-          flex: 1 0 calc(50% - 20px); /* Show two cards per slide */
-          margin: 0 10px;
-          display: none; /* Hide cards by default */
+      .room-card {
+        flex: 0 0 50%; 
+        text-align: center;
+        padding: 10px;
+        opacity: 1;
+        transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   
-          &.visible {
-            display: block;
+        &:hover {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+  
+        .room-image {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 10px;
+          box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+          transition: transform 0.3s ease;
+  
+          &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+          }
+        }
+  
+        .room-info {
+          margin-top: 10px;
+  
+          h3 {
+            font-size: 16px;
+            font-weight: bold;
           }
   
-          .room-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-          }
-  
-          .room-info {
-            text-align: center;
-            margin-top: 10px;
-  
-            h3 {
-              font-size: 16px;
-              font-weight: bold;
-              margin-bottom: 5px;
-            }
-  
-            p {
-              font-size: 14px;
-              color: #555;
-            }
+          p {
+            font-size: 14px;
+            color: #555;
           }
         }
       }

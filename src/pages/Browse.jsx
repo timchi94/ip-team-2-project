@@ -2,6 +2,7 @@ import React from "react";
 import "./Browse.scss";
 import AirbnbListing from "../components/ListingHeader/ListingHeader";
 import SleepSection from "../components/Carousel/Carousel";
+import image1 from "../assets/Screenshot.png"
 
 const Browse = () => {
   const propertyData = {
@@ -72,10 +73,12 @@ const Browse = () => {
           </section>
         </section>
         <section className="details-section">
-
-          <AirbnbListing />
+        <section>
+        <img src={image1}></img>
+        <SleepSection />
+        </section>
           {/* Right Section: Booking Card */}
-          <div className="booking-card">
+          <div className="booking-card scroll">
             <h2>{propertyData.price}</h2>
             <div className="date-section">
               <p>Check-In</p>
@@ -103,7 +106,6 @@ const Browse = () => {
             </div>
           </div>
         </section>
-        <SleepSection />
       </div>
     </>
   );
