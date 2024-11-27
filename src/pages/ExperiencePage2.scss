@@ -1,0 +1,90 @@
+.experience-page {
+    font-family: Arial, sans-serif;
+    max-width: 800px;
+    margin: 80px auto; 
+    text-align: center;
+  
+    h1 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      line-height: 2.4rem;
+    }
+  
+    .subtitle {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 3rem;
+      line-height: 1.6rem;
+    }
+  
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      justify-items: center;
+      margin-bottom: 3rem;
+  
+      .category-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 220px;
+        height: 120px;
+        border: 2px solid #ddd;
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          border-color: #ff385c;
+        }
+  
+        &.selected {
+          background-color: #ff385c;
+          color: white;
+          border-color: #ff385c;
+        }
+  
+        .icon {
+          font-size: 2rem;
+          margin-bottom: 0.5rem;
+        }
+  
+        p {
+          font-size: 1.2rem;
+          font-weight: bold;
+          margin: 0;
+        }
+      }
+    }
+  
+    .special-detail {
+      margin-top: 3rem;
+  
+      label {
+        display: block;
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.8rem;
+        text-align: left;
+      }
+  
+      input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+        line-height: 1.4rem;
+  
+        &:focus {
+          border-color: #ff385c;
+          outline: none;
+          box-shadow: 0 0 5px rgba(255, 56, 92, 0.5);
+        }
+      }
+    }
+  }
+  
