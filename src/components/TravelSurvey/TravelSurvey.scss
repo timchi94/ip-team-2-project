@@ -1,0 +1,114 @@
+// Variables
+$primary-color: #ff5a5f; // Airbnb red
+$secondary-color: #f8f9fa;
+$text-color: #333;
+$border-radius: 50%; // Fully round shape for buttons
+$button-size: 50px; // Increased button size for visibility
+$progress-bar-height: 4px; // Height of the progress bar
+
+// General Container
+.survey-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // Full height of the viewport
+    background-color: white; // Background color set to white
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    color: $text-color;
+    position: relative; // To place the progress bar at the bottom
+}
+
+// Progress Bar
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: $progress-bar-height;
+    background-color: $primary-color;
+    transition: width 0.3s ease-in-out;
+}
+
+// Section Title
+.survey-section__title {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: darken($primary-color, 10%);
+}
+
+// Questions
+.survey-question {
+    margin-bottom: 20px;
+    text-align: center;
+
+    &__title {
+        font-size: 1.2em;
+        margin-bottom: 10px;
+    }
+
+    &__rating {
+        display: flex;
+        gap: 15px; // Space out the rating buttons
+        justify-content: center;
+        align-items: center;
+
+        .survey-rating__button {
+            background-color: #e0e0e0;
+            width: $button-size;
+            height: $button-size;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: $border-radius;
+            cursor: pointer;
+            font-size: 1.5em;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            color: $text-color;
+
+            // Change to red on active state
+            &:hover {
+                background-color: #d0d0d0;
+            }
+
+            &.survey-rating__button--active {
+                background-color: $primary-color;
+                color: white; // Text color changes to white when active
+            }
+
+            // Hide the default radio button
+            input[type="radio"]:checked+& {
+                background-color: $primary-color;
+                color: white;
+            }
+        }
+
+        .survey-rating__input {
+            display: none; // Hide the default radio button
+        }
+    }
+}
+
+// Navigation Buttons
+.survey-navigation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%; // Make buttons stretch across the full width
+
+    .survey-button {
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: $primary-color;
+        color: white;
+        border: none;
+        width: 48%; // Make buttons a bit more compact
+
+        &:hover {
+            background-color: darken($primary-color, 10%);
+        }
+    }
+}
