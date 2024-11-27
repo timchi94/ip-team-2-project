@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./ExperiencePage2.scss";
 import { surveyData } from "../components/TravelSurvey/survey_json";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, Link } from "react-router-dom";
 
 const categories = [
 	{ id: 1, icon: "", label: "Food & Drink" },
@@ -79,13 +79,13 @@ const ExperiencePage1 = () => {
 							</button>
 						)}
 						{currentPage < surveyData.length - 1 ? (
-							<button
+							<Link to="/experience/2"><button
 								type="button"
 								onClick={handleNext}
 								className="survey-button survey-button--next"
 							>
 								Next
-							</button>
+							</button></Link>
 						) : (
 							<button
 								type="submit"

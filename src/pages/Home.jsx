@@ -194,7 +194,7 @@ const Home = () => {
 							<Link to="survey"><button className="airbnb__survey">S</button></Link>
 							{surveyComplete && (
 								<div>
-									<p className="airbnb__complete">thank you</p>
+									<p className="airbnb__complete">Thank you</p>
 									<span className="airbnb__complete--span">Your response has been saved</span>
 								</div>
 							)}
