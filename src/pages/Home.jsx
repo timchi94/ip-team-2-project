@@ -1,8 +1,11 @@
 import React from "react";
 import "./Home.scss";
 import Card from "../components/Card";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+	const navigate = useNavigate();
+
 	const mockData = [
 		{
 			id: 1,
@@ -164,29 +167,27 @@ const Home = () => {
 						<p>Experiences</p>
 					</div>
 					<div>
-						<p>Airbnb your home</p>
-						<p>Globe icon</p>
-						<p>Profile</p>
+						<img src="src/assets/Screenshot 2024-11-26 203741.png"></img>
 					</div>
 				</header>
 				<div>
 					<ul>
-						<li>Searchbar</li>
+						<img src="src/assets/Screenshot 2024-11-26 203429.png"></img>
 					</ul>
 				</div>
 
 				<nav>
 					<ul className="filters">
-						<li>Cabins</li>
-						<li>Icons</li>
-						<li>Play</li>
-						<li>Off the Grid</li>
-						<li>Rooms</li>
+						<img src="src/assets/Screenshot 2024-11-26 203909.png"></img>
 					</ul>
 				</nav>
 				<main className="home-grid">
 					{mockData.map((item) => (
-						<Card key={item.id} data={item} />
+						<Card
+							key={item.id}
+							data={item}
+
+						/>
 					))}
 				</main>
 			</div>
