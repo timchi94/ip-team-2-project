@@ -65,7 +65,7 @@
 	}
 	.details-section {
 		display: flex; /* Use Flexbox for layout */
-		justify-content: space-between; /* Space between details and booking card */
+        justify-content: center;
 		align-items: flex-start; /* Align both sections at the top */
 		gap: 2rem; /* Space between columns */
 
