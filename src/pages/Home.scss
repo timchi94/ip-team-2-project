@@ -1,15 +1,16 @@
 .home {
 	font-family: Arial, sans-serif;
-	padding: 20px;
 	width: 100vw;
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 
-  &__position {
-    display: flex;
-    height: 100vh;
-    padding-top: 70px;
-  }
+	&__position {
+		display: flex;
+		height: 100vh;
+		padding-top: 70px;
+    padding-left: 20px;
+    padding-right: 20px;
+	}
 	&-header {
 		display: flex;
 		justify-content: space-between;
@@ -17,7 +18,8 @@
 		margin-bottom: 20px;
 		position: absolute;
 		top: 0;
-    width: 100%;
+		width: 95%;
+    overflow: hidden;
 
 		.airbnblogo {
 			width: 30px;
@@ -34,7 +36,7 @@
 		list-style: none;
 		padding: 0;
 		margin: 0;
-    justify-content: center;
+		justify-content: center;
 
 		li {
 			cursor: pointer;
@@ -68,4 +70,13 @@
 		gap: 20px;
 		font-weight: bold;
 	}
+	&__search {
+		display: flex;
+		width: auto;
+		justify-content: center;
+	}
+}
+
+.filters__image {
+  width: 90vw;
 }

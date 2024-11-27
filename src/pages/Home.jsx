@@ -2,9 +2,30 @@ import React from "react";
 import "./Home.scss";
 import Card from "../components/Card";
 import { useNavigate } from "react-router-dom";
+import Modal from "../components/Modal/Modal";
+import { useState, useEffect } from "react";
 
 const Home = () => {
 	const navigate = useNavigate();
+
+	// State to control modal visibility
+	const [isModalVisible, setModalVisible] = useState(false);
+
+	useEffect(() => {
+		// Check if the modal has been shown before in the current session
+		const modalShown = sessionStorage.getItem("modalShown");
+
+		if (!modalShown) {
+			// Show modal if it hasn't been displayed yet
+			setModalVisible(true);
+			// Set a flag in session storage to prevent future displays
+			sessionStorage.setItem("modalShown", "true");
+		}
+	}, []);
+
+	const closeModal = () => {
+		setModalVisible(false);
+	};
 
 	const mockData = [
 		{
@@ -147,6 +168,8 @@ const Home = () => {
 	return (
 		<div className="home__position">
 			<div className="home">
+				{isModalVisible && <Modal onClose={closeModal} />}
+
 				<header className="home-header">
 					<div className="airbnb__logo-container">
 						<svg
@@ -170,24 +193,19 @@ const Home = () => {
 						<img src="src/assets/Screenshot 2024-11-26 203741.png"></img>
 					</div>
 				</header>
-				<div>
-					<ul>
-						<img src="src/assets/Screenshot 2024-11-26 203429.png"></img>
-					</ul>
+
+				<div className="airbnb__search">
+					<img src="src/assets/Screenshot 2024-11-26 203429.png"></img>
 				</div>
 
 				<nav>
 					<ul className="filters">
-						<img src="src/assets/Screenshot 2024-11-26 203909.png"></img>
+						<img className="filters__image" src="src/assets/Screenshot 2024-11-26 203909.png"></img>
 					</ul>
 				</nav>
 				<main className="home-grid">
 					{mockData.map((item) => (
-						<Card
-							key={item.id}
-							data={item}
-
-						/>
+						<Card key={item.id} data={item} />
 					))}
 				</main>
 			</div>
