@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.scss";
 import Card from "../components/Card";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import Modal from "../components/Modal/Modal";
 import { useState, useEffect } from "react";
 
@@ -10,6 +10,9 @@ const Home = () => {
 
 	// State to control modal visibility
 	const [isModalVisible, setModalVisible] = useState(false);
+
+	const location = useLocation();
+	const surveyComplete = location.state?.surveyComplete;
 
 	useEffect(() => {
 		// Check if the modal has been shown before in the current session
@@ -168,7 +171,6 @@ const Home = () => {
 	return (
 		<div className="home__position">
 			<div className="home">
-				{isModalVisible && <Modal onClose={closeModal} />}
 
 				<header className="home-header">
 					<div className="airbnb__logo-container">
@@ -188,6 +190,15 @@ const Home = () => {
 					<div className="airbnb__field">
 						<p>Stays</p>
 						<p>Experiences</p>
+						<div className={`airbnb__survey-container ${surveyComplete ? "airbnb__survey-container--complete" : ""}`}>
+							<Link to="survey"><button className="airbnb__survey">S</button></Link>
+							{surveyComplete && (
+								<div>
+									<p className="airbnb__complete">thank you</p>
+									<span className="airbnb__complete--span">Your response has been saved</span>
+								</div>
+							)}
+						</div>
 					</div>
 					<div>
 						<img src="src/assets/Screenshot 2024-11-26 203741.png"></img>
