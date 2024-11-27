@@ -1,7 +1,6 @@
 import React from 'react';
 import './ListingHeader.scss';
 
-// Header Section
 const HeaderSection = () => (
   <div className="header-section">
     <h1 className="title">Entire home in Barrie, Canada</h1>
@@ -19,14 +18,12 @@ const HeaderSection = () => (
   </div>
 );
 
-// Host Information Section
 const HostInfoSection = () => (
   <div className="host-info-section">
     <img src="host-profile.png" alt="Host" className="host-image" />
   </div>
 );
 
-// Amenities Section
 const AmenitiesSection = () => (
   <div className="amenities-section">
     <div className="amenity">
@@ -53,7 +50,6 @@ const AmenitiesSection = () => (
   </div>
 );
 
-// Main Component
 const AirbnbListing = () => (
   <div className="listing-container">
     <div className="left-section">
