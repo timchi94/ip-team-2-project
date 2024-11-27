@@ -1,3 +1,5 @@
+$primary-color: #ff5a5f;
+
 .home {
 	font-family: Arial, sans-serif;
 	width: 100vw;
@@ -8,9 +10,10 @@
 		display: flex;
 		height: 100vh;
 		padding-top: 70px;
-    padding-left: 20px;
-    padding-right: 20px;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
+
 	&-header {
 		display: flex;
 		justify-content: space-between;
@@ -19,7 +22,7 @@
 		position: absolute;
 		top: 0;
 		width: 95%;
-    overflow: hidden;
+		overflow: hidden;
 
 
 		.airbnblogo {
@@ -66,18 +69,60 @@
 		font-size: 8px;
 		gap: 5px;
 	}
+
 	&__field {
 		display: flex;
 		gap: 20px;
 		font-weight: bold;
+		align-items: center;
 	}
+
 	&__search {
 		display: flex;
 		width: auto;
 		justify-content: center;
 	}
+
+	&__survey-container {
+		position: relative;
+		margin-left: 20px;
+		height: 32px;
+
+		&--complete {
+			height: 32px;
+			background-color: rgba($color: $primary-color, $alpha: 0.4);
+		}
+	}
+
+	&__survey {
+		position: absolute;
+		left: -16px;
+		background-color: $primary-color;
+		border: 0;
+		color: white;
+		border-radius: 50%;
+		padding: 6px 10px;
+		font-size: large;
+		height: 32px;
+	}
+
+	&__complete {
+		padding-left: 20px;
+		font-size: 13px;
+		font-weight: normal;
+		padding-top: 5px;
+		line-height: 8px;
+
+		&--span {
+			padding-left: 20px;
+			padding-right: 10px;
+			font-size: 10px;
+		}
+
+
+	}
 }
 
 .filters__image {
-  width: 90vw;
+	width: 90vw;
 }
