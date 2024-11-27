@@ -6,10 +6,9 @@ import "./TravelSurvey.scss"; // Import your custom Sass styles
 function TravelSurvey() {
   const [currentPage, setCurrentPage] = useState(0);
 
-  // Initialize the form values based on the surveyData
   const initialValues = surveyData.reduce((acc, section) => {
     section.questions.forEach((question) => {
-      acc[question.name] = null; // Default value null for ratings or selections
+      acc[question.name] = null; // Default value null for all questions
     });
     return acc;
   }, {});
@@ -30,11 +29,10 @@ function TravelSurvey() {
     }
   };
 
-  const progressWidth = `${(currentPage / (surveyData.length - 1)) * 100}vw`;
+  const progressWidth = `${(currentPage / (surveyData.length - 1)) * 100}%`;
 
   return (
     <div className="survey-container">
-      <h2>Travel Preferences Survey</h2>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ setFieldValue, values }) => (
           <Form>
@@ -42,46 +40,63 @@ function TravelSurvey() {
               <h3 className="survey-section__title">
                 {surveyData[currentPage].section}
               </h3>
-              {surveyData[currentPage].questions.map((question, questionIndex) => {
-                // Check if the question is a "Yes/No" question
+              {surveyData[currentPage].questions.map((question, index) => {
                 const isYesNoQuestion = question.type === "radio";
 
                 return (
-                  <div key={questionIndex} className="survey-question">
-                    <label className="survey-question__title">{question.label}</label>
-                    <div className="survey-question__rating">
+                  <div key={index} className="survey-question">
+                    <label className="survey-question__title">
+                      {question.label}
+                    </label>
+                    <div className="survey-question__input">
                       {isYesNoQuestion ? (
-                        // Render Yes/No radio buttons for the "Yes/No" questions
                         question.options.map((option) => (
-                          <label key={option} className="survey-rating__button">
-                            <Field
-                              type="radio"
-                              name={question.name}
-                              value={option}
-                              className="survey-rating__input"
-                              onChange={() => setFieldValue(question.name, option)}
-                            />
-                            {option}
-                          </label>
-                        ))
-                      ) : (
-                        // Render the rating buttons (1-5) for other questions
-                        [1, 2, 3, 4, 5].map((rating) => (
                           <label
-                            key={rating}
-                            className={`survey-rating__button ${values[question.name] === rating ? "survey-rating__button--active" : ""
+                            key={option}
+                            className={`survey-rating__button ${values[question.name] === option
+                                ? "survey-rating__button--active"
+                                : ""
                               }`}
                           >
                             <Field
                               type="radio"
                               name={question.name}
-                              value={rating}
+                              value={option}
                               className="survey-rating__input"
-                              onChange={() => setFieldValue(question.name, rating)}
+                              onChange={() =>
+                                setFieldValue(question.name, option)
+                              }
                             />
-                            {rating}
+                            {option}
                           </label>
                         ))
+                      ) : (
+                        <div className="survey-slider">
+                          <input
+                            type="range"
+                            min="1"
+                            max="5"
+                            step="1"
+                            value={values[question.name] || 3}
+                            onChange={(e) =>
+                              setFieldValue(question.name, parseInt(e.target.value, 10))
+                            }
+                            className="survey-slider__input"
+                          />
+                          <div className="survey-slider__values">
+                            {[1, 2, 3, 4, 5].map((value) => (
+                              <span
+                                key={value}
+                                className={`survey-slider__value ${values[question.name] === value
+                                    ? "survey-slider__value--active"
+                                    : ""
+                                  }`}
+                              >
+                                {value}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       )}
                     </div>
                   </div>
@@ -89,30 +104,45 @@ function TravelSurvey() {
               })}
             </div>
 
-            <div className="survey-navigation">
-              {currentPage > 0 && (
-                <button type="button" onClick={handlePrevious} className="survey-button">
-                  Previous
-                </button>
-              )}
-              {currentPage < surveyData.length - 1 ? (
-                <button type="button" onClick={handleNext} className="survey-button">
-                  Next
-                </button>
-              ) : (
-                <button type="submit" className="survey-button">
-                  Submit
-                </button>
-              )}
-            </div>
+            {/* Footer */}
+            <footer className="survey-footer">
+              <div className="progress-bar" style={{ width: progressWidth }} />
+              <div className="footer-content">
+                <div className="page-status">
+                  Page {currentPage + 1} of {surveyData.length}
+                </div>
+                <div className="survey-navigation">
+                  {currentPage > 0 && (
+                    <button
+                      type="button"
+                      onClick={handlePrevious}
+                      className="survey-button survey-button--previous"
+                    >
+                      Previous
+                    </button>
+                  )}
+                  {currentPage < surveyData.length - 1 ? (
+                    <button
+                      type="button"
+                      onClick={handleNext}
+                      className="survey-button survey-button--next"
+                    >
+                      Next
+                    </button>
+                  ) : (
+                    <button type="submit" className="survey-button survey-button--next">
+                      Submit
+                    </button>
+                  )}
+                </div>
+              </div>
+            </footer>
           </Form>
         )}
       </Formik>
-
-      {/* Progress bar at the bottom */}
-      <div className="progress-bar" style={{ width: progressWidth }} />
     </div>
   );
 }
+
 
 export default TravelSurvey;
