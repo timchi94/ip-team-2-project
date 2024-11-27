@@ -1,12 +1,23 @@
 .home {
 	font-family: Arial, sans-serif;
 	padding: 20px;
+	width: 100vw;
+  display: flex;
+  flex-direction: column;
 
+  &__position {
+    display: flex;
+    height: 100vh;
+    padding-top: 70px;
+  }
 	&-header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		margin-bottom: 20px;
+		position: absolute;
+		top: 0;
+    width: 100%;
 
 		.airbnblogo {
 			width: 30px;
@@ -46,9 +57,14 @@
 }
 
 .airbnb {
-  &__logo-container {
-    display: flex;
-    font-size: 8px;
-    gap: 5px;
-  }
+	&__logo-container {
+		display: flex;
+		font-size: 8px;
+		gap: 5px;
+	}
+	&__field {
+		display: flex;
+		gap: 20px;
+		font-weight: bold;
+	}
 }
