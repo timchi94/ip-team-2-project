@@ -1,6 +1,7 @@
 import { surveyData } from "./survey_json";
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
+import { Link } from "react-router-dom";
 import "./TravelSurvey.scss"; // Import your custom Sass styles
 
 function TravelSurvey() {
@@ -54,8 +55,8 @@ function TravelSurvey() {
                           <label
                             key={option}
                             className={`survey-rating__button ${values[question.name] === option
-                                ? "survey-rating__button--active"
-                                : ""
+                              ? "survey-rating__button--active"
+                              : ""
                               }`}
                           >
                             <Field
@@ -88,8 +89,8 @@ function TravelSurvey() {
                               <span
                                 key={value}
                                 className={`survey-slider__value ${values[question.name] === value
-                                    ? "survey-slider__value--active"
-                                    : ""
+                                  ? "survey-slider__value--active"
+                                  : ""
                                   }`}
                               >
                                 {value}
@@ -130,9 +131,9 @@ function TravelSurvey() {
                       Next
                     </button>
                   ) : (
-                    <button type="submit" className="survey-button survey-button--next">
+                    <Link to="/" state={{ surveyComplete: true }}><button type="submit" className="survey-button survey-button--next">
                       Submit
-                    </button>
+                    </button></Link>
                   )}
                 </div>
               </div>
